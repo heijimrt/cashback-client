@@ -1,0 +1,70 @@
+<form
+  [formGroup]="form"
+  (ngSubmit)="onSubmit(form?.value)">
+  <div>
+    <span class="ui-float-label">
+      <input
+        pInputText
+        id="float-input"
+        type="text"
+        formControlName="firstName"
+        size="30"> 
+      <label for="float-input">Nome</label>
+    </span>
+  </div>
+
+  <div>
+    <span class="ui-float-label">
+      <input
+        pInputText
+        id="float-input"
+        type="text"
+        formControlName="surName"
+        size="30"> 
+      <label for="float-input">Sobrenome</label>
+    </span>
+  </div>
+
+  <div>
+    <span class="ui-float-label">
+      <input
+        id="float-input"
+        type="email"
+        formControlName="email"
+        pInputText> 
+      <label for="float-input">Email</label>
+    </span>
+  </div>
+
+  <div>
+    <span class="ui-float-label">
+      <input
+        id="float-input"
+        type="password"
+        formControlName="password"
+        pInputText> 
+      <label for="float-input">Senha</label>
+    </span>
+  </div> 
+
+  <div>
+    <span class="ui-float-label">
+      <input
+        id="float-input"
+        type="text"
+        formControlName="document"
+        size="30"
+        mask="000.000.000-00"
+        pInputText> 
+      <label for="float-input">CPF</label>
+    </span>
+  </div>
+
+  <button type="submit">
+    Enviar
+  </button>
+</form>
+
+<pre>
+  {{ form.value | json }}
+</pre>
