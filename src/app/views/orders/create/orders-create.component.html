@@ -1,0 +1,34 @@
+Registrar nova venda
+
+
+<form
+  [formGroup]="form"
+  (ngSubmit)="onSubmit(form.value)">
+  <p-dropdown
+    [options]="items"
+    placeholder="Selecione o produto"
+    formControlName="product">
+  </p-dropdown>
+
+  <input
+    pInputText
+    type="text"
+    formControlName="value" />
+
+  <button type="submit">
+    Adicionar venda
+  </button>
+
+</form>
+
+
+recibo - total
+
+produto valor
+<div *ngFor="let priceItem of wallet">
+    {{ priceItem?.product }} - {{ priceItem?.value }}
+</div>
+
+<pre>
+  {{ form.value | json }}
+</pre>

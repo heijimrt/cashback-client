@@ -1,7 +1,7 @@
 <header class="p-grid">
   <div class="p-col-3">
       <div class="box">
-        Cashback
+        Cashback Application
       </div>
   </div>
   <div class="p-col">
@@ -10,5 +10,11 @@
       </div>
   </div>
 </header>
+
+<div>
+  <a [routerLink]="['/orders']" preserveQueryParams preserveFragment>
+    Vendas
+  </a>
+</div>
 
 <router-outlet></router-outlet>
