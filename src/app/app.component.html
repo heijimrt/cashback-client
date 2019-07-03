@@ -1,20 +1,36 @@
-<header class="p-grid">
-  <div class="p-col-3">
-      <div class="box">
-        Cashback Application
-      </div>
+<header class="d-flex bd-highlight header-color default-color p-2">
+  <div class="flex-grow-1 bd-highlight">
+      Cashback Application
   </div>
-  <div class="p-col">
-      <div class="box">
-        <button>login</button>
+  <div class="bd-highlight">
+    <a
+      [routerLink]="['/orders']"
+      preserveQueryParams
+      preserveFragment>
+      Vendas
+    </a>
+  </div>
+  <div class="bd-highlight text-right">
+    <div>
+      <div class="dropdown">
+        <button
+            class="btn btn-secondary dropdown-toggle"
+            type="button"
+            id="dropdownMenuButton"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false">
+        </button>
+        <div
+          class="dropdown-menu dropdown-menu-right"
+          aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="#">Logout</a>
+        </div>
       </div>
+    </div>
   </div>
 </header>
 
-<div>
-  <a [routerLink]="['/orders']" preserveQueryParams preserveFragment>
-    Vendas
-  </a>
+<div class="container">
+  <router-outlet></router-outlet>
 </div>
-
-<router-outlet></router-outlet>

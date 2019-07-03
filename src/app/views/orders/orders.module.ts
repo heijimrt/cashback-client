@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 
+import { NgxCurrencyModule } from 'ngx-currency';
 import { DropdownModule } from 'primeng/dropdown';
 import { InputTextModule } from 'primeng/inputtext';
 import { OrdersComponent } from './orders.component';
@@ -21,6 +22,7 @@ import { OrdersShowComponent } from './show/orders-show.component';
     DropdownModule,
     ReactiveFormsModule,
     InputTextModule,
+    NgxCurrencyModule
   ]
 })
 export class OrdersModule { }

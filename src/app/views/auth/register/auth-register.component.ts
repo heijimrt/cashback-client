@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { HttpAuthService } from 'src/app/core/services/http/http-auth.service';
 
 @Component({
@@ -22,11 +22,17 @@ export class AuthRegisterComponent implements OnInit {
    */
   private buildForm(): void {
     this.form = new FormGroup({
-      firstName: new FormControl(null),
-      surName: new FormControl(null),
-      email: new FormControl(null),
-      password: new FormControl(null),
-      document: new FormControl(null)
+      firstName: new FormControl(null, Validators.required),
+      surName: new FormControl(null, Validators.required),
+      email: new FormControl(null, Validators.compose([
+        Validators.required,
+        Validators.email
+      ])),
+      password: new FormControl(null, Validators.required),
+      document: new FormControl(null, Validators.compose([
+        Validators.required,
+        Validators.max(11)
+      ]))
     });
   }
 

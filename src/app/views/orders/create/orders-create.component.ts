@@ -14,6 +14,7 @@ export class OrdersCreateComponent implements OnInit {
   public form: FormGroup;
   public items: Array<SelectItem> = [];
   public wallet: Array<any> = [];
+  private currencySetup = { prefix: 'R$ ', thousands: '.', decimal: ',' };
 
   constructor(private readonly ordersService: OrdersService) {}
 

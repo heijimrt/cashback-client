@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthGuard } from '../core/guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -13,10 +14,12 @@ const routes: Routes = [
   {
     path: 'orders',
     loadChildren: './orders/orders.module#OrdersModule',
+    canActivate: [ AuthGuard ]
   },
   {
     path: 'cashback',
     loadChildren: './cashback/cashback.module#CashbackModule',
+    canActivate: [ AuthGuard ]
   }
 ];
 
