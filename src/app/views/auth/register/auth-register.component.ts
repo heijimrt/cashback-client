@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { HttpAuthService } from 'src/app/core/services/http/http-auth.service';
+import { TokenService } from './../../../core/services/token/token.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-auth-register',
@@ -11,7 +13,11 @@ export class AuthRegisterComponent implements OnInit {
 
   public form: FormGroup;
 
-  constructor(private http: HttpAuthService) {}
+  constructor(
+    private readonly http: HttpAuthService,
+    private readonly tokenService: TokenService,
+    private readonly router: Router
+  ) {}
 
   ngOnInit() {
     this.buildForm();
@@ -43,8 +49,15 @@ export class AuthRegisterComponent implements OnInit {
    */
   public onSubmit(value): void {
     this.http
-        .post('users', value)
+        .post('auth/register', { data: value })
         .subscribe(
-          (data) => console.log(data));
+          (data: any) => {
+            const response = data.body;
+            const valid: boolean = this.tokenService.hasRequestedToken(response);
+            if (valid) {
+              this.tokenService.saveToken(response.token);
+              this.router.navigate(['orders']);
+            }
+          });
   }
 }

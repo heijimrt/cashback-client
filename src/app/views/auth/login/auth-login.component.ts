@@ -36,7 +36,6 @@ export class AuthLoginComponent implements OnInit {
       .login(data)
       .pipe(take(1))
       .subscribe((user: UserResponse) => {
-        console.log(user);
         const valid: boolean = this.tokenService.hasRequestedToken(user);
         if (valid) {
           this.tokenService.saveToken(user.token);
