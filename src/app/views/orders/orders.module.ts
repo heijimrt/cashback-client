@@ -9,6 +9,7 @@ import { OrdersComponent } from './orders.component';
 import { OrdersRoutingModule } from './orders-routing.module';
 import { OrdersCreateComponent } from './create/orders-create.component';
 import { OrdersShowComponent } from './show/orders-show.component';
+import { CustomPipesModule } from 'src/app/core/pipes/custom-pipes.module';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { OrdersShowComponent } from './show/orders-show.component';
     DropdownModule,
     ReactiveFormsModule,
     InputTextModule,
-    NgxCurrencyModule
+    NgxCurrencyModule,
+    CustomPipesModule
   ]
 })
 export class OrdersModule { }

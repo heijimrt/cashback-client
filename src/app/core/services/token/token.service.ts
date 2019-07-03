@@ -25,8 +25,8 @@ export class TokenService
    */
   public saveToken(token): void
   {
-    window.sessionStorage.removeItem(this.key);
-    window.sessionStorage.setItem(this.key,  JSON.stringify(token));
+    window.localStorage.removeItem(this.key);
+    window.localStorage.setItem(this.key,  JSON.stringify(token));
   }
 
   /**
@@ -35,7 +35,7 @@ export class TokenService
    */
   public hasToken(): boolean
   {
-    return !!window.sessionStorage.getItem(this.key);
+    return !!window.localStorage.getItem(this.key);
   }
 
   /**
@@ -46,7 +46,7 @@ export class TokenService
   public hasRequestedToken(item: Object): boolean
   {
     return item instanceof Object
-        && 'access_token' in item;
+        && 'token' in item;
   }
 
   /**
@@ -54,7 +54,7 @@ export class TokenService
    */
   public get token(): string
   {
-    const item = JSON.parse(sessionStorage.getItem(this.key));
+    const item = JSON.parse(localStorage.getItem(this.key));
     if (item) return item;
   }
 
@@ -63,7 +63,7 @@ export class TokenService
    */
   public clearToken(): void
   {
-    window.sessionStorage.removeItem(this.key);
-    window.sessionStorage.clear();
+    window.localStorage.removeItem(this.key);
+    window.localStorage.clear();
   }
 }

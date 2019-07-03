@@ -3,6 +3,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { take } from 'rxjs/operators';
 import { SelectItem } from 'primeng/components/common/selectitem';
 import { OrdersService } from '../services/orders.service';
+import { SumPipe } from 'src/app/core/pipes/sum.pipe';
 
 @Component({
   selector: 'app-orders-create',
@@ -16,16 +17,28 @@ export class OrdersCreateComponent implements OnInit {
   public wallet: Array<any> = [];
   private currencySetup = { prefix: 'R$ ', thousands: '.', decimal: ',' };
 
-  constructor(private readonly ordersService: OrdersService) {}
+  constructor(
+    private readonly ordersService: OrdersService,
+    private readonly sumPipe: SumPipe
+  ) {}
 
   ngOnInit() {
     this.receiveProducts();
     this.buildForm();
   }
 
-  public onSubmit(value) {
+  public walletSum() {
+    return this.sumPipe.transform(this.wallet, '');
+  }
+
+  public addWallet(value) {
     this.wallet.push(value);
     this.form.reset();
+  }
+
+  public submitOrder(): void {
+    const value: number = this.sumPipe.transform(this.wallet, 'value');
+    console.log(value);
   }
 
   private receiveProducts(): void {
@@ -39,11 +52,14 @@ export class OrdersCreateComponent implements OnInit {
             return {
               label: product.label,
               value: product.label
-            }
+            };
           });
         });
   }
 
+  /**
+   * Build reactive form
+   */
   private buildForm(): void {
     this.form = new FormGroup({
       product: new FormControl(null),

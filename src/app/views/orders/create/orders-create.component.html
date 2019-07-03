@@ -5,7 +5,7 @@ Registrar nova venda
     <div class="panel-cashback text-center">
       <form
         [formGroup]="form"
-        (ngSubmit)="onSubmit(form.value)">
+        (ngSubmit)="addWallet(form.value)">
         <div class="form-group">
           <p-dropdown
             [options]="items"
@@ -49,6 +49,7 @@ Registrar nova venda
                 {{ priceItem?.value }}
             </div>
           </div>
+          {{  wallet | sum : 'value' }}
         </div>
 
         <ng-template #noItems>
@@ -59,7 +60,8 @@ Registrar nova venda
       <div>
         <button
           type="button"
-          class="btn btn-success">
+          class="btn btn-success"
+          (click)="submitOrder()">
           Registrar Venda
         </button>
       </div>
